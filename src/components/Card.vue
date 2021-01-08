@@ -2,7 +2,10 @@
   <div class="card" v-on:click="$emit(`click`)" v-bind:class="card.vendor">
     <header>
       <img src="../assets/chip-light.svg" />
-      <img v-bind:src="require(`../assets/vendor-${card.vendor}.svg`)" />
+      <img
+        v-if="card.vendor"
+        v-bind:src="require(`../assets/vendor-${card.vendor}.svg`)"
+      />
     </header>
 
     <div class="number">{{ card.number }}</div>
@@ -27,10 +30,6 @@ export default {
   props: {
     card: Object,
   },
-  data() {
-    return {};
-  },
-  methods: {},
 };
 </script>
 
@@ -45,7 +44,7 @@ export default {
   grid-auto-rows: 2.8rem;
   text-shadow: rgba(255, 255, 255, 0.4) -1px -1px 2px;
   border-radius: 0.6rem;
-  background: rgb(238, 238, 238);
+  background: rgb(148, 147, 147);
   padding: 1rem;
   gap: 0.5rem 0px;
   color: beige;
